@@ -3,25 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111827">
+<meta name="theme-color" content="#10213a">
 <title>Return</title>
 <link rel="manifest" href="manifest.webmanifest">
 <style>
-:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f3f4f6}*{box-sizing:border-box}body{margin:0}.app{max-width:720px;margin:auto;padding:18px 14px 48px}.card{background:#fff;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 1px 5px #0001}h1{margin:0 0 4px}.sub,.hint{color:#6b7280}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.event,.quick,.small,.link{border:0;border-radius:14px;padding:14px;font:inherit;font-weight:700}.event{min-height:62px;font-size:17px;background:#e5e7eb}.event.done{background:#d1fae5}.times{display:grid;gap:8px;margin-top:12px}.time-row{display:grid;grid-template-columns:90px 1fr auto;gap:8px;align-items:center}.time-row input,.field,.med-time{width:100%;border:1px solid #d1d5db;border-radius:10px;padding:10px;font:inherit}.small{padding:9px 11px;background:#f3f4f6}.sleepiness{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.sleepiness button{border:1px solid #d1d5db;background:#fff;border-radius:12px;padding:12px;font-weight:700}.sleepiness .selected{background:#111827;color:#fff}.med-row{display:grid;grid-template-columns:1.6fr .7fr .7fr .7fr;gap:8px;margin:10px 0;align-items:center}.quick{background:#eef2ff}.med-log{margin-top:10px;display:grid;gap:8px}.med-item{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;background:#f9fafb;border-radius:10px;padding:9px}.med-main{display:grid;gap:6px}.med-name{font-weight:700}.status{font-weight:800;margin-top:10px}.link{display:block;text-decoration:none;text-align:center;background:#111827;color:#fff;margin-top:10px}.field-row{display:flex;gap:10px;align-items:center}.footer{text-align:center;font-size:12px;color:#6b7280;margin-top:18px}@media(max-width:430px){.med-row{grid-template-columns:1fr 1fr 1fr 1fr}.med-row strong{grid-column:1/-1}.quick{padding:11px 6px;font-size:14px}.med-item{grid-template-columns:1fr}}
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#13213a;background:#f3f5f8}*{box-sizing:border-box}body{margin:0;background:#f3f5f8}.app{max-width:520px;margin:auto;padding:14px 12px 34px}.head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin:3px 2px 12px}.head h1{font-size:26px;line-height:1;margin:0 0 7px}.sub{margin:0;color:#697386;font-size:13px}.datebox{width:138px;flex:0 0 auto}.field,.datebox input,.time-input,.med-time{width:100%;border:1px solid #d9dee7;background:#f8f9fb;border-radius:12px;padding:11px 12px;font:inherit;color:#1e293b}.card{background:#fff;border:1px solid #e1e5ec;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 1px 2px #0f172a0a}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.action{border:0;border-radius:14px;min-height:58px;padding:12px;font:inherit;font-weight:800;background:#d7f8e7;color:#0866d6}.action.done{background:#c7f2dc;color:#065f46}.section-title{font-size:20px;font-weight:800;margin:0 0 10px}.rows{display:grid;gap:8px}.row{display:grid;grid-template-columns:96px 1fr 34px;gap:8px;align-items:center}.label{font-weight:800;font-size:15px}.clear{border:0;background:#eef2f7;border-radius:9px;min-height:38px;font-size:17px;color:#64748b}.sleep-total{margin-top:10px;background:#f5f7fa;border-radius:12px;padding:11px 12px;font-weight:800}.sleepiness{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.sleepiness button{border:1px solid #d5e3fb;background:#f7fbff;border-radius:12px;padding:11px 0;font:inherit;font-weight:800;color:#1465d8}.sleepiness .selected{background:#cfe1ff;border-color:#8fb8ff}.hint{color:#7b8495;font-size:12px;margin-top:7px}.med-list{display:grid;gap:10px}.med-row{display:grid;grid-template-columns:1fr 62px 62px 62px;gap:7px;align-items:center}.med-name{font-weight:750;font-size:14px;line-height:1.25}.dose{border:0;background:#e7f0ff;color:#1264d6;border-radius:10px;padding:9px 4px;font:inherit;font-weight:800;font-size:13px}.med-log{display:grid;gap:8px;margin-top:12px}.med-item{background:#f7f8fa;border-radius:12px;padding:9px}.med-top{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.med-title{font-weight:750;font-size:13px}.delete{border:0;background:#eef2f7;border-radius:9px;padding:7px 9px;color:#64748b}.work-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.revenue{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:center}.history{display:block;text-decoration:none;text-align:center;background:#10213a;color:#fff;border-radius:12px;padding:13px;font-weight:800}.footer{font-size:11px;color:#8a93a2;text-align:center;margin-top:10px}@media(max-width:390px){.med-row{grid-template-columns:1fr 1fr 1fr 1fr}.med-name{grid-column:1/-1}.row{grid-template-columns:82px 1fr 32px}.head{align-items:stretch}.datebox{width:125px}}
 </style>
 </head>
 <body><main class="app">
-<h1>Return</h1><p class="sub">押すだけで記録。途中が抜けてもそのまま使えます。</p>
-<section class="card"><strong>勤務日</strong> <input id="workDate" type="date" class="field" style="margin-top:8px"></section>
-<section class="card"><div class="grid" id="eventButtons"></div><div class="times" id="timeEditor"></div><div id="sleepTotal" class="status"></div></section>
-<section class="card"><h2>起床時の眠気</h2><div class="sleepiness" id="sleepiness"></div><div class="hint">未選択でもOK</div></section>
-<section class="card"><h2>服薬</h2><div id="presetMeds"></div><div class="hint">量をタップすると現在時刻で記録します。記録後に服薬時刻を変更できます。</div><div class="med-log" id="medLog"></div></section>
-<section class="card"><h2>営収</h2><div class="field-row"><input id="revenue" type="number" inputmode="numeric" min="0" placeholder="例 67300" class="field"><span>円</span></div></section>
-<section class="card"><a class="link" href="history.html">担当医に見せる服薬履歴</a></section>
+<header class="head"><div><h1>Return</h1><p class="sub">押すだけで記録。途中が抜けてもそのまま使えます。</p></div><div class="datebox"><input id="workDate" type="date"></div></header>
+
+<section class="card"><div class="actions" id="sleepActions"></div></section>
+
+<section class="card"><div class="rows" id="sleepRows"></div><div id="sleepTotal" class="sleep-total" hidden></div></section>
+
+<section class="card"><h2 class="section-title">起床時の眠気</h2><div class="sleepiness" id="sleepiness"></div><div class="hint">未選択でもOK</div></section>
+
+<section class="card"><h2 class="section-title">服薬</h2><div class="med-list" id="presetMeds"></div><div class="hint">量をタップすると現在時刻で記録します。服薬時刻は記録後に変更できます。</div><div class="med-log" id="medLog"></div></section>
+
+<section class="card"><div class="work-actions" id="workActions"></div></section>
+
+<section class="card"><div class="rows" id="workRows"></div></section>
+
+<section class="card"><h2 class="section-title">営収</h2><div class="revenue"><input id="revenue" type="number" inputmode="numeric" min="0" placeholder="例 67300" class="field"><strong>円</strong></div></section>
+
+<section class="card"><a class="history" href="history.html">担当医に見せる服薬履歴</a></section>
 <p class="footer">記録はこの端末のブラウザ内に自動保存されます。</p>
 </main>
 <script>
-const EVENTS=[['sleep','🌙 寝る'],['wake','☀️ 起きた'],['nap','💤 二度寝'],['rewake','☀️ また起きた'],['left','🚗 出た'],['arrived','📍 着いた'],['dispatch','🚕 出庫'],['off','🏁 退勤']];
+const SLEEP_EVENTS=[['sleep','🌙 寝る','寝る'],['wake','☀️ 起きた','起きた'],['nap','💤 二度寝','二度寝'],['rewake','☀️ また起きた','また起きた']];
+const WORK_EVENTS=[['left','🚗 出た','出た'],['arrived','📍 着いた','着いた'],['dispatch','🚕 出庫','出庫'],['off','🏁 退勤','退勤']];
 const PRESETS=[
  {name:'エチゾラム錠0.25mg',amounts:['1/2錠','1錠','2錠']},
  {name:'トリアゾラム錠0.125mg',amounts:['1/2錠','1錠','2錠']},
@@ -30,18 +41,28 @@ const PRESETS=[
  {name:'ラメルテオン錠8mg',amounts:['1/2錠','1錠','2錠']},
  {name:'レキサルティOD錠0.5mg',amounts:['1/2錠','1錠','2錠']}
 ];
-const KEY='return-app-v1';let db=JSON.parse(localStorage.getItem(KEY)||'{}');const workDate=document.getElementById('workDate');
-const pad=n=>String(n).padStart(2,'0');const localDate=(d=new Date())=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-const toInput=iso=>{if(!iso)return'';const d=new Date(iso);return`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`};
-const fromInput=v=>v?new Date(v).toISOString():null;function rec(){const k=workDate.value;db[k]||={events:{},sleepiness:null,meds:[],revenue:''};return db[k]}function save(){localStorage.setItem(KEY,JSON.stringify(db))}
+const KEY='return-app-v1';
+let db=JSON.parse(localStorage.getItem(KEY)||'{}');
+const workDate=document.getElementById('workDate');
+const pad=n=>String(n).padStart(2,'0');
+const localDate=(d=new Date())=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const toInput=iso=>{if(!iso)return'';const d=new Date(iso);return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`};
+const fromInput=v=>v?new Date(v).toISOString():null;
+function rec(){const k=workDate.value;db[k]||={events:{},sleepiness:null,meds:[],revenue:''};return db[k]}
+function save(){localStorage.setItem(KEY,JSON.stringify(db))}
 function fmt(ms){if(ms<0)return'';const m=Math.round(ms/60000),h=Math.floor(m/60),r=m%60;return h?`${h}時間${r}分`:`${r}分`}
 function sleepMs(r){let total=0,has=false;if(r.events.sleep&&r.events.wake){total+=new Date(r.events.wake)-new Date(r.events.sleep);has=true}if(r.events.nap&&r.events.rewake){total+=new Date(r.events.rewake)-new Date(r.events.nap);has=true}return has?total:null}
 function addMed(drug,amount){rec().meds.push({time:new Date().toISOString(),drug,amount});save();render()}
-function render(){const r=rec();const b=document.getElementById('eventButtons');b.innerHTML='';EVENTS.forEach(([k,l])=>{const x=document.createElement('button');x.className='event'+(r.events[k]?' done':'');x.textContent=l+(r.events[k]?' ✓':'');x.onclick=()=>{r.events[k]=new Date().toISOString();save();render()};b.appendChild(x)});
-const ed=document.getElementById('timeEditor');ed.innerHTML='';EVENTS.forEach(([k,l])=>{const row=document.createElement('div');row.className='time-row';const n=document.createElement('span');n.textContent=l.replace(/^.. /,'');const i=document.createElement('input');i.type='datetime-local';i.value=toInput(r.events[k]);i.onchange=()=>{if(i.value)r.events[k]=fromInput(i.value);else delete r.events[k];save();render()};const x=document.createElement('button');x.className='small';x.textContent='×';x.onclick=()=>{delete r.events[k];save();render()};row.append(n,i,x);ed.appendChild(row)});
-const sm=sleepMs(r);document.getElementById('sleepTotal').textContent=sm===null?'':`睡眠時間＝${fmt(sm)}`;
-const s=document.getElementById('sleepiness');s.innerHTML='';for(let j=1;j<=5;j++){const x=document.createElement('button');x.textContent=['①','②','③','④','⑤'][j-1];if(r.sleepiness===j)x.classList.add('selected');x.onclick=()=>{r.sleepiness=r.sleepiness===j?null:j;save();render()};s.appendChild(x)}
-const p=document.getElementById('presetMeds');p.innerHTML='';PRESETS.forEach(med=>{const row=document.createElement('div');row.className='med-row';const name=document.createElement('strong');name.textContent=med.name;row.appendChild(name);med.amounts.forEach(amount=>{const btn=document.createElement('button');btn.className='quick';btn.textContent=amount;btn.onclick=()=>addMed(med.name,amount);row.appendChild(btn)});p.appendChild(row)});
-const log=document.getElementById('medLog');log.innerHTML='';r.meds.forEach((m,idx)=>{const row=document.createElement('div');row.className='med-item';const main=document.createElement('div');main.className='med-main';const name=document.createElement('div');name.className='med-name';name.textContent=`${m.drug} ${m.amount}`;const time=document.createElement('input');time.type='datetime-local';time.className='med-time';time.value=toInput(m.time);time.onchange=()=>{if(time.value){m.time=fromInput(time.value);save()} };main.append(name,time);const del=document.createElement('button');del.className='small';del.textContent='削除';del.onclick=()=>{r.meds.splice(idx,1);save();render()};row.append(main,del);log.appendChild(row)});document.getElementById('revenue').value=r.revenue??''}
+function renderActions(target,events,r){const wrap=document.getElementById(target);wrap.innerHTML='';events.forEach(([k,label])=>{const b=document.createElement('button');b.className='action'+(r.events[k]?' done':'');b.textContent=label+(r.events[k]?' ✓':'');b.onclick=()=>{r.events[k]=new Date().toISOString();save();render()};wrap.appendChild(b)})}
+function renderRows(target,events,r){const wrap=document.getElementById(target);wrap.innerHTML='';events.forEach(([k,,label])=>{const row=document.createElement('div');row.className='row';const name=document.createElement('div');name.className='label';name.textContent=label;const input=document.createElement('input');input.type='datetime-local';input.className='time-input';input.value=toInput(r.events[k]);input.onchange=()=>{if(input.value)r.events[k]=fromInput(input.value);else delete r.events[k];save();render()};const clear=document.createElement('button');clear.className='clear';clear.textContent='×';clear.onclick=()=>{delete r.events[k];save();render()};row.append(name,input,clear);wrap.appendChild(row)})}
+function render(){const r=rec();
+ renderActions('sleepActions',SLEEP_EVENTS,r);renderRows('sleepRows',SLEEP_EVENTS,r);
+ const sm=sleepMs(r),sleepTotal=document.getElementById('sleepTotal');sleepTotal.hidden=sm===null;sleepTotal.textContent=sm===null?'':`睡眠時間＝${fmt(sm)}`;
+ const s=document.getElementById('sleepiness');s.innerHTML='';for(let j=1;j<=5;j++){const b=document.createElement('button');b.textContent=['①','②','③','④','⑤'][j-1];if(r.sleepiness===j)b.classList.add('selected');b.onclick=()=>{r.sleepiness=r.sleepiness===j?null:j;save();render()};s.appendChild(b)}
+ const p=document.getElementById('presetMeds');p.innerHTML='';PRESETS.forEach(med=>{const row=document.createElement('div');row.className='med-row';const name=document.createElement('div');name.className='med-name';name.textContent=med.name;row.appendChild(name);med.amounts.forEach(amount=>{const b=document.createElement('button');b.className='dose';b.textContent=amount;b.onclick=()=>addMed(med.name,amount);row.appendChild(b)});p.appendChild(row)});
+ const log=document.getElementById('medLog');log.innerHTML='';r.meds.forEach((m,idx)=>{const item=document.createElement('div');item.className='med-item';const top=document.createElement('div');top.className='med-top';const title=document.createElement('div');title.className='med-title';title.textContent=`${m.drug} ${m.amount}`;const del=document.createElement('button');del.className='delete';del.textContent='削除';del.onclick=()=>{r.meds.splice(idx,1);save();render()};top.append(title,del);const time=document.createElement('input');time.type='datetime-local';time.className='med-time';time.value=toInput(m.time);time.onchange=()=>{if(time.value){m.time=fromInput(time.value);save()}};item.append(top,time);log.appendChild(item)});
+ renderActions('workActions',WORK_EVENTS,r);renderRows('workRows',WORK_EVENTS,r);
+ document.getElementById('revenue').value=r.revenue??'';
+}
 workDate.value=localDate();workDate.onchange=render;document.getElementById('revenue').oninput=e=>{rec().revenue=e.target.value;save()};render();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
 </script></body></html>
