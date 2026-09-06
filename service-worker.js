@@ -1,4 +1,4 @@
-const CACHE='return-v5';
+const CACHE='return-v6';
 const ASSETS=['./','./index.html','./history.html','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
