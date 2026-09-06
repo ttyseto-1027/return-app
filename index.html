@@ -1,141 +1,40 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#111827" />
-  <title>Return</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <style>
-    :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f3f4f6}
-    *{box-sizing:border-box} body{margin:0} button,input,select{font:inherit}
-    .app{max-width:720px;margin:0 auto;padding:18px 14px 48px}
-    h1{font-size:28px;margin:0 0 4px}.sub{color:#6b7280;margin:0 0 18px}
-    .card{background:#fff;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 1px 5px rgba(0,0,0,.06)}
-    .date-row,.field-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .date-row input,.field-row input{flex:1;min-width:150px;border:1px solid #d1d5db;border-radius:12px;padding:11px;background:#fff}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .event{border:0;border-radius:16px;padding:17px 10px;font-weight:700;font-size:18px;background:#e5e7eb;min-height:62px}
-    .event.done{background:#d1fae5}
-    .event:active{transform:scale(.98)}
-    .times{display:grid;gap:8px;margin-top:12px}
-    .time-row{display:grid;grid-template-columns:110px 1fr auto;gap:8px;align-items:center}
-    .time-row input{width:100%;border:1px solid #d1d5db;border-radius:10px;padding:9px}
-    .clear{border:0;background:#f3f4f6;border-radius:10px;padding:9px 11px}
-    h2{font-size:18px;margin:0 0 12px}
-    .sleepiness{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-    .sleepiness button{border:1px solid #d1d5db;background:#fff;border-radius:12px;padding:12px 0;font-weight:700}
-    .sleepiness button.selected{background:#111827;color:#fff}
-    .hint{font-size:13px;color:#6b7280;margin-top:8px}
-    .med{display:grid;gap:8px;padding:10px 0;border-top:1px solid #eee}
-    .med:first-child{border-top:0;padding-top:0}
-    .med input{width:100%;border:1px solid #d1d5db;border-radius:10px;padding:10px}
-    .med-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:8px}
-    .add{width:100%;border:1px dashed #9ca3af;background:#fff;border-radius:12px;padding:12px;margin-top:8px}
-    .status{font-weight:700;margin-top:10px}
-    .footer-note{font-size:12px;color:#6b7280;text-align:center;margin-top:18px}
-    @media(max-width:480px){.time-row{grid-template-columns:90px 1fr auto}.grid{grid-template-columns:1fr 1fr}.event{font-size:17px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<title>Return</title>
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f3f4f6}*{box-sizing:border-box}body{margin:0}.app{max-width:720px;margin:auto;padding:18px 14px 48px}.card{background:#fff;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 1px 5px #0001}h1{margin:0 0 4px}.sub,.hint{color:#6b7280}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.event,.quick,.small,.link{border:0;border-radius:14px;padding:14px;font:inherit;font-weight:700}.event{min-height:62px;font-size:17px;background:#e5e7eb}.event.done{background:#d1fae5}.times{display:grid;gap:8px;margin-top:12px}.time-row{display:grid;grid-template-columns:90px 1fr auto;gap:8px;align-items:center}.time-row input,.field{width:100%;border:1px solid #d1d5db;border-radius:10px;padding:10px;font:inherit}.small{padding:9px 11px;background:#f3f4f6}.sleepiness{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.sleepiness button{border:1px solid #d1d5db;background:#fff;border-radius:12px;padding:12px;font-weight:700}.sleepiness .selected{background:#111827;color:#fff}.med-row{display:grid;grid-template-columns:1.3fr .8fr .8fr;gap:8px;margin:8px 0}.quick{background:#eef2ff}.med-log{margin-top:10px;display:grid;gap:6px}.med-item{display:flex;gap:8px;align-items:center;justify-content:space-between;background:#f9fafb;border-radius:10px;padding:9px}.status{font-weight:800;margin-top:10px}.link{display:block;text-decoration:none;text-align:center;background:#111827;color:#fff;margin-top:10px}.field-row{display:flex;gap:10px;align-items:center}.footer{text-align:center;font-size:12px;color:#6b7280;margin-top:18px}@media(max-width:430px){.med-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
 </head>
-<body>
-<main class="app">
-  <h1>Return</h1>
-  <p class="sub">押すだけで記録。途中が抜けてもそのまま使えます。</p>
-
-  <section class="card">
-    <div class="date-row">
-      <strong>勤務日</strong>
-      <input id="workDate" type="date" />
-    </div>
-  </section>
-
-  <section class="card">
-    <div class="grid" id="eventButtons"></div>
-    <div class="times" id="timeEditor"></div>
-    <div id="napDuration" class="status"></div>
-  </section>
-
-  <section class="card">
-    <h2>起床時の眠気</h2>
-    <div class="sleepiness" id="sleepiness"></div>
-    <div class="hint">未選択でもOK</div>
-  </section>
-
-  <section class="card">
-    <h2>服薬</h2>
-    <div id="meds"></div>
-    <button class="add" id="addMed">＋ 服薬を追加</button>
-    <div class="hint">未記録のままでもOK</div>
-  </section>
-
-  <section class="card">
-    <h2>営収</h2>
-    <div class="field-row">
-      <input id="revenue" type="number" inputmode="numeric" min="0" placeholder="例 67300" />
-      <span>円</span>
-    </div>
-  </section>
-
-  <p class="footer-note">記録はこの端末のブラウザ内に自動保存されます。</p>
+<body><main class="app">
+<h1>Return</h1><p class="sub">押すだけで記録。途中が抜けてもそのまま使えます。</p>
+<section class="card"><strong>勤務日</strong> <input id="workDate" type="date" class="field" style="margin-top:8px"></section>
+<section class="card"><div class="grid" id="eventButtons"></div><div class="times" id="timeEditor"></div><div id="sleepTotal" class="status"></div></section>
+<section class="card"><h2>起床時の眠気</h2><div class="sleepiness" id="sleepiness"></div><div class="hint">未選択でもOK</div></section>
+<section class="card"><h2>服薬</h2><div id="presetMeds"></div><div class="hint">薬名を入力せず、量をタップすると現在時刻で記録します。</div><div class="med-log" id="medLog"></div></section>
+<section class="card"><h2>営収</h2><div class="field-row"><input id="revenue" type="number" inputmode="numeric" min="0" placeholder="例 67300" class="field"><span>円</span></div></section>
+<section class="card"><a class="link" href="history.html">担当医に見せる服薬履歴</a></section>
+<p class="footer">記録はこの端末のブラウザ内に自動保存されます。</p>
 </main>
-
 <script>
-const EVENTS = [
-  ['sleep','🌙 寝る'],['wake','☀️ 起きた'],['nap','💤 二度寝'],['rewake','☀️ また起きた'],
-  ['left','🚗 出た'],['arrived','📍 着いた'],['dispatch','🚕 出庫'],['off','🏁 退勤']
-];
-const STORAGE_KEY='return-app-v1';
-let db = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-const workDate = document.getElementById('workDate');
-
-function pad(n){return String(n).padStart(2,'0')}
-function localDate(d=new Date()){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`}
-function toLocalInput(iso){if(!iso)return ''; const d=new Date(iso); return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`}
-function fromLocalInput(v){return v ? new Date(v).toISOString() : null}
-function rec(){const k=workDate.value; db[k] ||= {events:{},sleepiness:null,meds:[],revenue:''}; return db[k]}
-function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db))}
-function setEvent(key){rec().events[key]=new Date().toISOString(); save(); render()}
-function clearEvent(key){delete rec().events[key]; save(); render()}
-function fmtDuration(ms){if(ms<0)return ''; const m=Math.round(ms/60000); const h=Math.floor(m/60), r=m%60; return h ? `${h}時間${r}分` : `${r}分`}
-
-function render(){
-  const r=rec();
-  const buttons=document.getElementById('eventButtons'); buttons.innerHTML='';
-  EVENTS.forEach(([key,label])=>{const b=document.createElement('button'); b.className='event'+(r.events[key]?' done':''); b.textContent=label+(r.events[key]?' ✓':''); b.onclick=()=>setEvent(key); buttons.appendChild(b)});
-  const ed=document.getElementById('timeEditor'); ed.innerHTML='';
-  EVENTS.forEach(([key,label])=>{
-    const row=document.createElement('div'); row.className='time-row';
-    const name=document.createElement('span'); name.textContent=label.replace(/^.. /,'');
-    const inp=document.createElement('input'); inp.type='datetime-local'; inp.value=toLocalInput(r.events[key]); inp.onchange=()=>{if(inp.value) r.events[key]=fromLocalInput(inp.value); else delete r.events[key]; save(); render()};
-    const x=document.createElement('button'); x.className='clear'; x.textContent='×'; x.onclick=()=>clearEvent(key);
-    row.append(name,inp,x); ed.appendChild(row);
-  });
-  const nap=document.getElementById('napDuration');
-  nap.textContent=(r.events.nap&&r.events.rewake)?`二度寝：${fmtDuration(new Date(r.events.rewake)-new Date(r.events.nap))}`:'';
-
-  const s=document.getElementById('sleepiness'); s.innerHTML='';
-  for(let i=1;i<=5;i++){const b=document.createElement('button'); b.textContent=['①','②','③','④','⑤'][i-1]; if(r.sleepiness===i)b.classList.add('selected'); b.onclick=()=>{r.sleepiness=r.sleepiness===i?null:i;save();render()}; s.appendChild(b)}
-
-  const meds=document.getElementById('meds'); meds.innerHTML='';
-  r.meds.forEach((m,idx)=>{
-    const wrap=document.createElement('div'); wrap.className='med';
-    const t=document.createElement('input'); t.type='datetime-local'; t.value=toLocalInput(m.time); t.onchange=()=>{m.time=fromLocalInput(t.value);save()};
-    const grid=document.createElement('div'); grid.className='med-grid';
-    const drug=document.createElement('input'); drug.placeholder='薬名'; drug.value=m.drug||''; drug.oninput=()=>{m.drug=drug.value;save()};
-    const amount=document.createElement('input'); amount.placeholder='量 例 1錠'; amount.value=m.amount||''; amount.oninput=()=>{m.amount=amount.value;save()};
-    const del=document.createElement('button'); del.className='clear'; del.textContent='削除'; del.onclick=()=>{r.meds.splice(idx,1);save();render()};
-    grid.append(drug,amount); wrap.append(t,grid,del); meds.appendChild(wrap);
-  });
-  document.getElementById('revenue').value=r.revenue ?? '';
-}
-
-workDate.value=localDate();
-workDate.onchange=render;
-document.getElementById('addMed').onclick=()=>{rec().meds.push({time:new Date().toISOString(),drug:'',amount:''}); save(); render()};
-document.getElementById('revenue').oninput=e=>{rec().revenue=e.target.value; save()};
-render();
-
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}))}
-</script>
-</body>
-</html>
+const EVENTS=[['sleep','🌙 寝る'],['wake','☀️ 起きた'],['nap','💤 二度寝'],['rewake','☀️ また起きた'],['left','🚗 出た'],['arrived','📍 着いた'],['dispatch','🚕 出庫'],['off','🏁 退勤']];
+const PRESETS=['ボルズィ','エチゾラム','トリアゾラム','ラメルテオン'];
+const KEY='return-app-v1';let db=JSON.parse(localStorage.getItem(KEY)||'{}');const workDate=document.getElementById('workDate');
+const pad=n=>String(n).padStart(2,'0');const localDate=(d=new Date())=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const toInput=iso=>{if(!iso)return'';const d=new Date(iso);return`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`};
+const fromInput=v=>v?new Date(v).toISOString():null;function rec(){const k=workDate.value;db[k]||={events:{},sleepiness:null,meds:[],revenue:''};return db[k]}function save(){localStorage.setItem(KEY,JSON.stringify(db))}
+function fmt(ms){if(ms<0)return'';const m=Math.round(ms/60000),h=Math.floor(m/60),r=m%60;return h?`${h}時間${r}分`:`${r}分`}
+function sleepMs(r){let total=0,has=false;if(r.events.sleep&&r.events.wake){total+=new Date(r.events.wake)-new Date(r.events.sleep);has=true}if(r.events.nap&&r.events.rewake){total+=new Date(r.events.rewake)-new Date(r.events.nap);has=true}return has?total:null}
+function addMed(drug,amount){rec().meds.push({time:new Date().toISOString(),drug,amount});save();render()}
+function render(){const r=rec();const b=document.getElementById('eventButtons');b.innerHTML='';EVENTS.forEach(([k,l])=>{const x=document.createElement('button');x.className='event'+(r.events[k]?' done':'');x.textContent=l+(r.events[k]?' ✓':'');x.onclick=()=>{r.events[k]=new Date().toISOString();save();render()};b.appendChild(x)});
+const ed=document.getElementById('timeEditor');ed.innerHTML='';EVENTS.forEach(([k,l])=>{const row=document.createElement('div');row.className='time-row';const n=document.createElement('span');n.textContent=l.replace(/^.. /,'');const i=document.createElement('input');i.type='datetime-local';i.value=toInput(r.events[k]);i.onchange=()=>{if(i.value)r.events[k]=fromInput(i.value);else delete r.events[k];save();render()};const x=document.createElement('button');x.className='small';x.textContent='×';x.onclick=()=>{delete r.events[k];save();render()};row.append(n,i,x);ed.appendChild(row)});
+const sm=sleepMs(r);document.getElementById('sleepTotal').textContent=sm===null?'':`睡眠時間＝${fmt(sm)}`;
+const s=document.getElementById('sleepiness');s.innerHTML='';for(let j=1;j<=5;j++){const x=document.createElement('button');x.textContent=['①','②','③','④','⑤'][j-1];if(r.sleepiness===j)x.classList.add('selected');x.onclick=()=>{r.sleepiness=r.sleepiness===j?null:j;save();render()};s.appendChild(x)}
+const p=document.getElementById('presetMeds');p.innerHTML='';PRESETS.forEach(drug=>{const row=document.createElement('div');row.className='med-row';const name=document.createElement('strong');name.textContent=drug;const half=document.createElement('button');half.className='quick';half.textContent='1/2錠';half.onclick=()=>addMed(drug,'1/2錠');const one=document.createElement('button');one.className='quick';one.textContent='1錠';one.onclick=()=>addMed(drug,'1錠');row.append(name,half,one);p.appendChild(row)});
+const log=document.getElementById('medLog');log.innerHTML='';r.meds.forEach((m,idx)=>{const row=document.createElement('div');row.className='med-item';const t=document.createElement('span');t.textContent=`${new Date(m.time).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})} ${m.drug} ${m.amount}`;const del=document.createElement('button');del.className='small';del.textContent='削除';del.onclick=()=>{r.meds.splice(idx,1);save();render()};row.append(t,del);log.appendChild(row)});document.getElementById('revenue').value=r.revenue??''}
+workDate.value=localDate();workDate.onchange=render;document.getElementById('revenue').oninput=e=>{rec().revenue=e.target.value;save()};render();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
+</script></body></html>
